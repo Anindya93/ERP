@@ -1,0 +1,82 @@
+  <!-- <Carousel>
+                <Carousel.Item interval={10000}>
+                    <img
+                        className="d-block w-100 img"
+                        src="../../../../../Images/1.jfif"
+                        alt="First slide"
+                    />
+                    <Carousel.Caption>
+                        <h3 className='mytext'>ERP For Construction</h3>
+                        <p className='mytext'>Knowledge bringing efficiency.</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item interval={10000}>
+                    <img
+                        className="d-block w-100 img"
+                        src="../../../../../Images/2.jfif"
+                        alt="Second slide"
+                    />
+                    <Carousel.Caption>
+                        <h3 className='mytext'>Alter your business</h3>
+                        <p className='mytext'>to align with best practices.</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item interval={10000}>
+                    <img
+                        className="d-block w-100 img"
+                        src="../../../../../Images/3.jfif"
+                        alt="Third slide"
+                    />
+                    <Carousel.Caption>
+                        <h3 className='mytext'>Uneasy about</h3>
+                        <p className='mytext'>Delete your realty worries.</p>
+                    </Carousel.Caption>
+                </Carousel.Item>
+            </Carousel>
+
+            <div className='cardsection'>
+                <Row xs={1} md={2}>
+                    <col>
+                    <Card style={{ width: '20rem', height: '31rem', marginRight:'30px' }}>
+                        <Card.Img variant="top" src="../../../../../Images/card1.jpg" />
+                        <Card.Body>
+                            <Card.Title><h1>Real Estate</h1></Card.Title>
+                            <Card.Text>
+                            <p><strong> For Builder </strong> <br />
+                                End-to-end ERP Software for real estate solutions</p>
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                    <Card style={{ width: '20rem', height: '31rem' }}>
+                        <Card.Img variant="top" src="../../../../../Images/card2.jpg" />
+                        <Card.Body>
+                            <Card.Title><h1>Infrastructure</h1></Card.Title>
+                            <Card.Text>
+                            <p><strong> For Contractor </strong> <br />
+                                 Best ERP software for construction industry addressing various concerns of infrastructure enterprise competently</p>
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                    <Card style={{ width: '20rem', height: '31rem' }}>
+                        <Card.Img variant="top" src="../../../../../Images/card3.jpg" />
+                        <Card.Body>
+                            <Card.Title><h1>Property Manager</h1></Card.Title>
+                            <Card.Text>
+                                <p><strong>For Commercial & Residential</strong><br/>
+                                To manage your property effectively to maximize your profitability</p>
+                            </Card.Text>
+                        </Card.Body>                        
+                    </Card>
+                    <Card style={{ width: '20rem', height: '31rem' }}>
+                        <Card.Img variant="top" src="../../../../../Images/card4.jpg" />
+                        <Card.Body>
+                            <Card.Title><h1>Facility Management</h1></Card.Title>
+                            <Card.Text>
+                                <p><strong>For Office & Homes</strong> <br/>
+                                Enables an Owner Association to manage routine affairs easily.</p>
+                            </Card.Text>
+                        </Card.Body>                        
+                    </Card>
+                </col>
+                </Row>
+            </div> -->

@@ -1,0 +1,20 @@
+.img{
+    height: 600px;
+}
+.mytext{
+    color: black;
+    font-size: 3rem; 
+    text-align: right;   
+}
+.cardsection{
+    margin-left: 30vh;
+    background-color: aqua;
+}
+.h1{
+    font-size: 3rem;
+    text-align: center;
+}
+.style{
+    margin-top: 6vh;
+    margin-left: 6vh;
+}
