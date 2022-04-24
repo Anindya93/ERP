@@ -1,6 +1,8 @@
 import React from 'react'
 import { Form, Button, Container } from 'react-bootstrap'
 import { useState } from 'react';
+import './Registration.css'
+import axios from 'axios';
 
 export default function Registration() {
     const validateEmail = RegExp('^([a-z0-9._]+)@([a-z]{5,12}).([a-z.]{2,20})$');
@@ -56,8 +58,9 @@ export default function Registration() {
         event.preventDefault();
         console.log("After Submit: ", inputState);
     }
+    
   return (
-    <>
+    <div className='main'>
             <Container className='main-section'>
                 <Form onSubmit={submitHandler}>
                     <h1>Enter You Details: </h1>
@@ -96,6 +99,6 @@ export default function Registration() {
                     </Button>
                 </Form>
             </Container>
-        </>
+        </div>
   )
 }

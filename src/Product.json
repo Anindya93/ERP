@@ -1,0 +1,47 @@
+{
+    "Product": [
+        {
+            "P_Name": "ERP_Software",
+            "P_ID": "ERP",
+            "P_Desc": "Manage your business smartly with this Software",
+            "P_subcat": [
+                {
+                    "S_id": "ERP01",
+                    "S_name": "Real_Estate",
+                    "S_Desc": "Real Estate industries face huge challenges in planning of project and execution, costing, regulatory compliances, cash flow visibility and collaboration with service providers. A building management system software helps the builders in managing end-to-end project management. Boost profitability and reinforce competence across the enterprise with Farvision Real Estate ERP Software.",
+                    "img":"../../../../Images/real_estate.jpg"
+                },
+                {
+                    "S_id": "ERP02",
+                    "S_name": "Infrastructure",
+                    "S_Desc": "Infrastructure industry confronts issues in new design creation and implementation, fund sourcing, timely procurement of raw material and more. Enhance revenue and business growth with Farvision, a robust ERP for Infrastructure. Experience planned execution and organizational control with this Infrastructure ERP.",
+                    "img":"../../../../Images/Infrastructure.jpeg"
+                },
+                {
+                    "S_id": "ERP03",
+                    "S_name": "Property_Managers",
+                    "S_Desc": "Property managers use our property management software to manage their portfolios of properties. Farvision Property Management ERP software from the house of Gamut Infosystems is a powerful tool for property managers as it helps to control rental and possession costs. Farvision has the most advanced property management system solutions that aid to deal more efficiently and effectively with rental properties.",
+                    "img":"../../../../Images/Property management.jpg"
+                },
+                {
+                    "S_id": "ERP04",
+                    "S_name": "Facility_Management",
+                    "S_Desc": "Efficient handling of Admin, Accounts, Communication and Facilities with Farvision Facility Management Facility Management Software aims to increase the efficiency of facility processes with the best facility management tools integrated with the business operations.",
+                    "img":"../../../../Images/Facility Management.jpg"
+                },
+                {
+                    "S_id": "ERP05",
+                    "S_name": "Manufacturing",
+                    "S_Desc": "Farvision ERP software for Manufacturing industry will help to monitor track sales order, efficient fulfillment of orders , develop supply chain management, Key progress indicators and production planning. This results in low costs, enhanced customer satisfaction and higher standards. The supply chain management, production , finance, asset maintenance, human capital and payroll, finance and business analytics are smoothly integrated resulting in enhanced performance, quicker response to change and happy customers.",
+                    "img":"../../../../Images/Manufacturing.jfif"
+                },
+                {
+                    "S_id": "ERP06",
+                    "S_name": "HRMS",
+                    "S_Desc": "Farvision HR Management & Payroll software can handle all aspects of a company's workforce starting from attendance, tax withholdings & returns, virtual & printed paychecks, induction and appointment and more - saving the time and effort of performing these functions with an outside process. Staff Management processes made smarter, simpler and efficient with Farvision's Human Resource Solutions.",
+                    "img":"../../../../Images/hrms.jfif"
+                }
+            ]
+        }
+    ]
+}

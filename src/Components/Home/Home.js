@@ -64,7 +64,6 @@ export default function Home() {
                                     End-to-end ERP Software for real estate solutions.</p>
                             </Card.Text>
                         </Card.Body>
-
                     </Card>
                     <Card>
                         <Card.Img variant="top" src="https://farvisionerp.com/images/content-img/infra1234.jpg" style={{ height: "30vh" }} />
@@ -75,7 +74,6 @@ export default function Home() {
                                     Best ERP software for construction industry addressing various concerns of infrastructure enterprise competently.</p>
                             </Card.Text>
                         </Card.Body>
-
                     </Card>
                     <Card>
                         <Card.Img variant="top" src="https://farvisionerp.com/images/content-img/property-mgmnt-12234.jpg" style={{ height: "30vh" }} />
@@ -85,14 +83,41 @@ export default function Home() {
                                 <p><strong>For Commercial & Residential</strong><br />
                                     To manage your property effectively to maximize your profitability.</p>
                             </Card.Text>
-                        </Card.Body>
-
+                     </Card.Body>
+                    </Card>
+                    <Card>
+                        <Card.Img variant="top" src="https://www.farvisionerp.com/images/content-img/oa1a.jpg" style={{ height: "30vh" }} />
+                        <Card.Body>
+                            <Card.Title><h1>Facility Management</h1></Card.Title>
+                            <Card.Text>
+                                <p><strong>For Office & Homes</strong><br />
+                                Enables an Owner Association to manage routine affairs easily.</p>
+                            </Card.Text>
+                     </Card.Body>
+                    </Card>
+                    <Card>
+                        <Card.Img variant="top" src="https://www.farvisionerp.com/images/content-img/manufacture1212.jpg" style={{ height: "30vh" }} />
+                        <Card.Body>
+                            <Card.Title><h1>Manufacturing</h1></Card.Title>
+                            <Card.Text>
+                                <p><strong>For RMC Batching Plant</strong><br />
+                                Manufacturing ERP Solution is an ERP software used in manufacturing industry, offering modules to streamline
+                                various business aspects</p>
+                            </Card.Text>
+                     </Card.Body>
+                    </Card>
+                    <Card>
+                        <Card.Img variant="top" src="https://www.farvisionerp.com/images/content-img/erp04.jpg" style={{ height: "30vh" }} />
+                        <Card.Body>
+                            <Card.Title><h1>HRMS</h1></Card.Title>
+                            <Card.Text>
+                                <p><strong>For HR and Payroll</strong><br />
+                                For HR and Payroll Managing your organization and its human resources efficiently</p>
+                            </Card.Text>
+                     </Card.Body>
                     </Card>
                 </Row>
             </CardGroup>
-
-
-        </div >
-
+        </div>
     )
 }

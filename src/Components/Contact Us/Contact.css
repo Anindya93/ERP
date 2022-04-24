@@ -1,0 +1,12 @@
+.contact{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    text-align: center;
+    font-size: x-large;
+}
+.center-line{
+    display: inline-block;
+    width: 70rem;
+    height: 2px;
+    border-top-style: 2px solid #070b00;
+}
