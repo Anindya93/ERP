@@ -1,104 +1,129 @@
 import React from 'react'
-import { Form, Button, Container } from 'react-bootstrap'
-import { useState } from 'react';
 import './Registration.css'
-import axios from 'axios';
+import { useFormik } from 'formik'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
+import { Button} from 'react-bootstrap';
 
-export default function Registration() {
-    const validateEmail = RegExp('^([a-z0-9._]+)@([a-z]{5,12}).([a-z.]{2,20})$');
-    const validatePwd = RegExp('^(?=.*[a-zA-Z0-9])(?=.*[!@#$%&*]).{4,15}$');
-    const validatePhone = RegExp('[6-9]{1}[0-9]{9}');
-    const [inputState, setInputState] = useState({
-        isError: {
-            FirstName: '',
-            LastName: '',
-            Email: '',
-            Password: '',
-            PhoneNo: '',
+const validateForm=(formValue)=>{
+        let errors={};
+        let validateEmail=/^([a-z0-9._]+)@([a-z]{5,20}).([a-z.]{2,20})$/
+
+
+        if(!formValue.uname)
+        {
+            errors.uname="Please enter User name"
+        }else if(formValue.uname.length<3)
+        {
+            errors.uname="Minimum 3 character"
+        }
+
+
+
+        if(!formValue.email)
+        {
+            errors.email="Please enter Email"
+        }
+        else if(!validateEmail.test(formValue.email))
+        {
+            errors.email="Invalid email";
+        }
+        if(!formValue.password)
+        {
+            errors.password="Please enter Password"
+        }
+        console.log("Errors: ",errors);
+        return errors;
+
+}
+
+
+export default function Reg() {
+
+    const navigate=useNavigate()
+
+    const formik=useFormik({
+        initialValues:{
+            uname:'',
+            email:'',
+            password:''
+        },
+        validate:validateForm,
+        onSubmit:(values)=>{
+            console.log("Recieved Values:",values);
+
+            let userData={
+                username:values.uname,
+                email:values.email,
+                password:values.password
+            }
+
+            axios.post('https://node-project-storage.herokuapp.com/postUserData',userData)
+            .then(res=>{
+                console.log("Axios Response: ",res);
+                alert(res.data.message)
+                navigate('/LoginPage')
+            })
+            .catch(err=>{
+                console.log("Axios error",err);
+            })
         }
     })
 
-    const handleChange = (event) => {
-        event.persist();
-        // console.log('Events :',event);
-        let { name, value } = event.target;
-        let isErr = { ...inputState.isError };
-        switch (name) {
-            case "FirstName":
-                isErr.FirstName =
-                    value.length < 4 ? "*atleast 4 characters required" : "";
-                break;
-            case "LastName":
-                isErr.LastName =
-                    value.length < 4 ? "*atleast 4 characters required" : "";
-                break;
-            case "Email":
-                isErr.Email =
-                    validateEmail.test(value) ? "" : "Wrong Pattern";
-                break;
-            case "Password":
-                isErr.Password =
-                    validatePwd.test(value) ? "" : "Wrong Pattern";
-                break;
-            case "PhoneNo":
-                isErr.PhoneNo =
-                    validatePhone.test(value) ? "" : "Wrong Pattern";
-                break;
-
-            default:
-                break;
-        }
-
-
-        setInputState({ ...inputState, [name]: value, isError: isErr });
-        console.log("Error: ", inputState.isError);
-        // console.log("Inputstate: ",inputState);
-    }
-    const submitHandler = (event) => {
-        event.preventDefault();
-        console.log("After Submit: ", inputState);
-    }
-    
   return (
-    <div className='main'>
-            <Container className='main-section'>
-                <Form onSubmit={submitHandler}>
-                    <h1>Enter You Details: </h1>
-                    <Form.Group className="mb-3">
-                        <Form.Label>First Name</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Your First Name" name='FirstName' onChange={handleChange} />
-                        {inputState.isError.FirstName.length > 0 && (<span>{inputState.isError.FirstName}</span>)}
-                    </Form.Group>
+    <div >
+      <div className='main'>
+        <div>
+        <form onSubmit={formik.handleSubmit} className='rtu'>
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Last Name</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Your Last Name" name='LastName' onChange={handleChange} />
-                        {inputState.isError.LastName.length > 0 && (<span>{inputState.isError.LastName}</span>)}
-                    </Form.Group>
+          <h2>REGISTRATION FORM</h2>
+          <br/>
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter Your email" name='Email' onChange={handleChange} />
-                        {inputState.isError.Email.length > 0 && (<span>{inputState.isError.Email}</span>)}
-                    </Form.Group>
+            <label htmlFor="uname" className='un'>user name:</label> 
+            <br/>
+            <input type="text" 
+            name="uname" 
+            placeholder="Enter user name" 
+            value={formik.values.uname}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}  className="input1"/>
+            {formik.touched.uname && formik.errors.uname ? (<span>{formik.errors.uname}</span>):null}
+            <br/>
+            <br/>
+            
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder=" Enter Password" name='Password' onChange={handleChange} />
-                        {inputState.isError.Password.length > 0 && (<span>{inputState.isError.Password}</span>)}
-                    </Form.Group>
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Phone No.</Form.Label>
-                        <Form.Control type="text" placeholder=" 1234567890 " name='PhoneNo' maxLength={10} onChange={handleChange} />
-                        {inputState.isError.PhoneNo.length > 0 && (<span>{inputState.isError.PhoneNo}</span>)}
-                    </Form.Group>
+            <label htmlFor="email" className="em">Email:</label>
+            <br/>
+            <input type="email" name="email" 
+            placeholder="Enter email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className="input2"/>
+            {formik.touched.email && formik.errors.email ? (<span className='invalid2'>{formik.errors.email}</span>):null}
+            <br/>
+            <br/>
 
-                    <Button className="square" onClick={() => console.log('click')}>
-                        Sign Up
-                    </Button>
-                </Form>
-            </Container>
-        </div>
+
+            <label htmlFor="password" className="pass">Password:</label>
+            <br/>
+            <input type="password" name="password" 
+            placeholder="Enter password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className="input2"
+
+           />
+            {formik.touched.password && formik.errors.password ? (<span >{formik.errors.password}</span>):null}
+            <br/>
+            <br/>
+            <Button type='submit' variant="info" disabled={!(formik.isValid && formik.dirty)}className="submit">Press here</Button>
+            
+       </form> 
+       </div>
+      </div>
+    </div>
   )
 }

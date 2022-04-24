@@ -1,72 +1,117 @@
 import React from 'react'
+import './Login.css'
 import { useFormik } from 'formik'
-import axios from 'axios';
-import './Login.css';
+import axios from 'axios'
+import { Link, useNavigate } from 'react-router-dom';
+import { Button} from 'react-bootstrap';
+
+const validateForm=(formValue)=>{
+        let errors={};
+        let validateEmail=/^([a-z0-9._]+)@([a-z]{5,20}).([a-z.]{2,20})$/
 
 
 
 
-const validateForm = (formValue) => {
-    let errors = {};
 
-    if (!formValue.email) {
-        errors.email = "Please enter email"
-    }
-    if (!formValue.password) {
-        errors.password = "Please enter password"
-    }
-    console.log("Error:", errors);
-    return errors;
+        if(!formValue.email)
+        {
+            errors.email="Please enter Email"
+        }
+        else if(!validateEmail.test(formValue.email))
+        {
+            errors.email="Invalid email";
+        }
+        if(!formValue.password)
+        {
+            errors.password="Please enter Password"
+        }
+        console.log("Errors: ",errors);
+        return errors;
+
 }
 
 
-
-
 export default function Login() {
-    const formik = useFormik({
-        initialValues: {
-            email: '',
-            password: ''
-        },
 
-        validate: validateForm,
-        onSubmit: (values) => {
-            console.log("Receive values:", values);
-            axios.post('https://node-project-storage.herokuapp.com/postLoginData', values)
-                .then(res => {
-                    console.log("Axios Response: ", res);
-                    window.sessionStorage.setItem("TokenValue",res.data.token);
-                })
-                .catch(err => {
-                    console.log("Axios error", err);
-                })
+    const navigate=useNavigate()
+
+    const formik=useFormik({
+        initialValues:{
+            email:'',
+            password:''
+        },
+        validate:validateForm,
+
+   
+        onSubmit:(values)=>{
+            console.log("Recieved Values:",values);
+
+         
+            axios.post('https://node-project-storage.herokuapp.com/postLoginData',values)
+            .then(res=>{
+                console.log("Axios Response: ",res.data);
+
+                window.sessionStorage.setItem("TokenValue",res.data.token);
+
+                alert("You have Successfully logged in");
+
+                navigate('/ProductPage')
+            })
+            .catch(err=>{
+                console.log("Axios error",err);
+            })
         }
     })
-    return (
-        <div className='body'>
-            <form className="logForm" onSubmit={formik.handleSubmit}>
-                <h2>LOGIN FROM</h2><br/>
-                <label> Email or Phone </label><br/>
-                <input type="email" name="email" placeholder='' value={formik.values.email} onBlur={formik.handleBlur} onChange={formik.handleChange} />
-                <br />
-                {formik.touched.email && formik.errors.email ? (<span>{formik.errors.email}</span>) : null}
-                <label>Password</label><br/>
-                <input type="password" name="password" placeholder='' value={formik.values.password} onBlur={formik.handleBlur} onChange={formik.handleChange} />
-                <br />
-                {formik.touched.password && formik.errors.password ? (<span>{formik.errors.password}</span>) : null}
 
-                <br/>
-                <button type="submit" className='submit' disabled={!(formik.isValid && formik.dirty)}>LOGIN</button>
-                <br />
-                <span id="not_a_member">Not a member?</span>
-                    <span id="signup">Signup now</span>
-            </form>
+  return (
+    <div >
+      <div className='body'>
+        <div>
+        <form onSubmit={formik.handleSubmit}  className='rtu'>
 
+          
 
+            <h2>Log In Form</h2>
+            <br/>
+            <label htmlFor="email" className='em'>Email:</label>
+            <br/>
+            <input type="email" name="email" 
+            placeholder="Enter email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur} className="input1"/>
+            {formik.touched.email && formik.errors.email ? (<span className='invalid'>{formik.errors.email}</span>):null}
+            <br/>
+            <br/>
+            <br/>
 
-           
 
             
-        </div>
-    )
+            <label htmlFor="password" className="pass">Password:</label>
+            <br/>
+            <input type="password" name="password" 
+            placeholder="Enter password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className="input2"
+           />
+            {formik.touched.password && formik.errors.password ? (<span className='invalid2'>{formik.errors.password}</span>):null}
+            <br/>
+            <br/>
+            <Button type='submit' variant="info" disabled={!(formik.isValid && formik.dirty)} className="submit">Press here</Button>
+            <br/>
+            <br/>
+
+
+           <Link to='/RegPage' className='notMem' style={{marginLeft: "2vh", fontWeight: "bolder",
+  fontSize: "22px "}}>Not a member? Register here</Link>
+     
+            
+       </form> 
+       </div>
+       </div>
+
+    </div>
+  )
 }
